@@ -9,13 +9,15 @@ const slug = 'draft-isolation-synthetic-fixture';
 const title = 'Synthetic unpublished isolation fixture';
 const fixture = join(root, 'src/content/blog', `${slug}.md`);
 // Exercise an undated, featured draft through the real production compiler.
+let createdFixture = false;
 try {
   await writeFile(fixture, `---\ntitle: "${title}"\ndescription: "Synthetic test content only"\ndraft: true\nfeatured: true\n---\nPrivate synthetic test sentinel.\n`, { flag: 'wx' });
+  createdFixture = true;
   execFileSync(process.execPath, ['node_modules/astro/bin/astro.mjs', 'build'], {
     cwd: root, env: { ...process.env, ASTRO_TELEMETRY_DISABLED: '1' }, stdio: 'pipe',
   });
 } finally {
-  await unlink(fixture).catch((error) => { if (error.code !== 'ENOENT') throw error; });
+  if (createdFixture) await unlink(fixture).catch((error) => { if (error.code !== 'ENOENT') throw error; });
 }
 async function walk(dir) {
   const files = [];
