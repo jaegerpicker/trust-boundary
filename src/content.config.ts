@@ -6,9 +6,10 @@ const blog = defineCollection({
   schema: z.object({
     title: z.string(),
     description: z.string(),
-    pubDate: z.coerce.date(),
+    pubDate: z.coerce.date().optional(),
     updatedDate: z.coerce.date().optional(),
     draft: z.boolean().default(false),
+    featured: z.boolean().default(false),
     tags: z.array(z.string()).default([]),
     format: z.enum([
       'system-deep-dive',
@@ -16,6 +17,9 @@ const blog = defineCollection({
       'postmortem',
       'cross-system-test',
     ]).optional(),
+  }).refine((data) => data.draft || data.pubDate !== undefined, {
+    message: 'Published articles require a publication date',
+    path: ['pubDate'],
   }),
 });
 

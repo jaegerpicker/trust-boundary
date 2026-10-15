@@ -4,7 +4,7 @@ import { meta } from '../data/site-content';
 
 export async function GET(context) {
   const posts = (await getCollection('blog', ({ data }) => !data.draft))
-    .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+    .sort((a, b) => (b.data.pubDate?.valueOf() ?? 0) - (a.data.pubDate?.valueOf() ?? 0));
 
   return rss({
     title: 'Trust Boundary',

@@ -5,7 +5,7 @@ import Giscus from '../components/Giscus.astro';
 interface Props {
   title: string;
   description: string;
-  pubDate: Date;
+  pubDate?: Date;
   updatedDate?: Date;
   tags?: string[];
   draft?: boolean;
@@ -28,7 +28,7 @@ const dateFmt = new Intl.DateTimeFormat('en-US', {
 });
 ---
 
-<BaseLayout title={title} description={description}>
+<BaseLayout title={title} description={description} noindex={draft}>
   <article class="post-shell">
     <header class="post-header panel">
       {draft && <p class="draft-banner">Draft - not yet published</p>}
@@ -36,7 +36,7 @@ const dateFmt = new Intl.DateTimeFormat('en-US', {
       <h1>{title}</h1>
       <p class="description">{description}</p>
       <p class="meta">
-        <time datetime={pubDate.toISOString()}>{dateFmt.format(pubDate)}</time>
+        {pubDate && <time datetime={pubDate.toISOString()}>{dateFmt.format(pubDate)}</time>}
         {updatedDate && (
           <> / updated <time datetime={updatedDate.toISOString()}>{dateFmt.format(updatedDate)}</time></>
         )}

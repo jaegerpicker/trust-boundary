@@ -7,7 +7,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 const isDev = import.meta.env.DEV;
 
 const posts = (await getCollection('blog', ({ data }) => isDev || !data.draft))
-  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+  .sort((a, b) => Number(b.data.draft) - Number(a.data.draft) || (b.data.pubDate?.valueOf() ?? 0) - (a.data.pubDate?.valueOf() ?? 0));
 
 const dateFmt = new Intl.DateTimeFormat('en-US', {
   year: 'numeric',
@@ -77,9 +77,9 @@ const formats = [
                 : 'Field Note'}
           </span>
           <span class="signal-card__title">{post.data.title}</span>
-          <time class="signal-card__meta" datetime={post.data.pubDate.toISOString()}>
+          {post.data.pubDate && <time class="signal-card__meta" datetime={post.data.pubDate.toISOString()}>
             {dateFmt.format(post.data.pubDate)}
-          </time>
+          </time>}
           <p class="muted">{post.data.description}</p>
         </a>
       ))}
