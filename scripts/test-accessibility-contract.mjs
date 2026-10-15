@@ -24,7 +24,7 @@ assert.match(orbit, /aria-hidden="true"/);
 assert.match(globalCss, /:focus-visible/);
 assert.match(globalCss, /prefers-reduced-motion: reduce/);
 assert.match(resume, /@media print/);
-assert.match(giscus, /small_screens_big_worlds/);
+assert.match(giscus, /trust-boundary/);
 assert.match(giscus, /site-view-change/);
 
 console.log('accessibility contract tests passed');

@@ -36,7 +36,7 @@ assert.match(about, /about\.lead/);
 assert.match(content, /AI-Assisted/);
 
 for (const source of [footer, giscus]) {
-  assert.match(source, /small_screens_big_worlds/);
+  assert.match(source, /trust-boundary/);
   assert.doesNotMatch(source, /ai_sec_research/);
 }
 
