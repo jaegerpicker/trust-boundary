@@ -14,11 +14,12 @@ const capabilities = resume.capabilities;
 const roles = [
   {
     org: 'Brivo',
-    title: 'Lead Software Engineer',
-    meta: 'December 2023 - Present / Remote',
+    title: 'Engineering Manager',
+    meta: 'September 15, 2026 - Present',
+    note: 'Previously Team Lead Engineer: January 2, 2024 - September 14, 2026',
     bullets: [
-      'Leads two engineering teams of three on a cloud access-control platform with more than 100,000 deployed devices in the field.',
-      'Leads the effort to use AI agents for zero-day discovery across the codebase, and built the threat-hunting agentic AI skills the security work runs on.',
+      'Engineering leadership on a cloud access-control platform.',
+      'Uses AI-enabled SDLC planning, review, development, testing, and verification, alongside production-error investigation and build/test failure triage.',
       'Drives threat modeling, secure code review, CI/CD hardening, and cross-team alignment between engineering, product, and security.',
       'Translates platform risk into practical engineering decisions for systems connecting cloud services, devices, and user workflows.',
     ],
@@ -27,9 +28,8 @@ const roles = [
     org: 'Riffle Analytics',
     title: 'Lead AI and Mobile Engineer',
     meta: 'February 2019 - December 2023 / Portland, Maine area',
-    note: 'Own venture, launched concurrently with the full-time roles below',
     bullets: [
-      'Founded the company and directed three contractors building privacy-aware native mobile applications in Swift, Kotlin, and C++ for data-sensitive workflows.',
+      'Built privacy-aware native mobile applications in Swift, Kotlin, and C++ for data-sensitive workflows.',
       'Designed Python and Node.js data pipelines feeding ML systems while keeping user data protection and operational boundaries visible.',
       'Created internal tooling and review practices to improve mobile security posture and application resilience.',
     ],
@@ -39,9 +39,8 @@ const roles = [
     title: 'Principal Software Engineer 2',
     meta: 'August 2020 - November 2023 / Brunswick, Maine',
     bullets: [
-      'Architect reviewing designs and code for 20 engineering teams, and running security testing across those same 20 teams.',
-      'Ran internal red-team assessments and security reviews for three client platforms in insurance, warehouse management, and data warehousing, covering web, server-side Java and C#, and internal Android and iOS applications.',
-      'Caught an unauthenticated web form during design and code review that let anyone send mail from a client internal domain. The open relay would have made a highly convincing phishing channel; it was closed before release.',
+      'Reviewed architecture and code across engineering teams and conducted application security testing.',
+      'Conducted internal red-team assessments and security reviews across web, server-side, Android, and iOS applications.',
       'Advised on mobile application security, distributed system design, and cloud infrastructure practices with DevSecOps partners.',
     ],
   },
@@ -50,7 +49,7 @@ const roles = [
     title: 'Mobile Engineering Lead and Manager',
     meta: 'May 2019 - August 2020 / Remote',
     bullets: [
-      'Grew the mobile engineering team from two to eight, shipping React Native and TypeScript products used by more than 10,000 daily users across 21 states.',
+      'Led a mobile engineering team delivering React Native and TypeScript products.',
       'Designed backend services and GraphQL APIs around role-based access, data integrity, and resilience.',
       'Introduced secure development lifecycle practices and peer security reviews into normal delivery routines.',
     ],
@@ -60,9 +59,9 @@ const roles = [
     title: 'Director of Engineering, Mobile',
     meta: 'January 2018 - December 2019 / Portland, Maine area',
     bullets: [
-      'Led two teams, two employees and six contractors, owning Swift and Kotlin mobile architecture for distributed, sensor-driven systems connected to IoT and backend platforms.',
+      'Led Swift and Kotlin mobile architecture for distributed, sensor-driven systems connected to IoT and backend platforms.',
       'Coordinated mobile, hardware, and backend work across Go, Elixir, and Python services with security and quality standards in view.',
-      'Established testing, threat mitigation, and maintainable delivery practices across both employee and contractor teams.',
+      'Established testing, threat mitigation, and maintainable delivery practices.',
     ],
   },
   {
@@ -70,9 +69,8 @@ const roles = [
     title: 'Application Security Engineer',
     meta: 'June 2017 - August 2018 / Portland, Maine area',
     bullets: [
-      'Ran internal red-team operations as roughly 75% of the role: application-layer penetration testing across internal and external web applications, covering the OWASP Top 10, access control, and information leakage, with particular attention to protecting journalists and their sources.',
+      'Performed internal red-team operations, penetration testing, vulnerability research, and proof-of-concept exploit development across web applications, covering the OWASP Top 10, access control, and information leakage.',
       'Worked primarily in OWASP ZAP and Burp Suite, with custom Python tooling for the cases the standard proxies did not reach.',
-      'Found a SQL injection in a public-facing comments control that exposed database contents including usernames and password hashes, then led remediation with the owning application teams.',
       'Partnered with development teams on secure code review, threat modeling, infrastructure hardening, and SecDevOps pipelines.',
     ],
   },
@@ -81,8 +79,7 @@ const roles = [
     title: 'Director of Engineering - Mobile and Web Front End',
     meta: 'March 2014 - June 2017 / Portland, Maine area',
     bullets: [
-      'Built and led three engineering teams totaling 15 people delivering native iOS, Android, web, GraphQL, and data pipeline systems.',
-      'Provided engineering leadership through the growth from startup to publicly traded company, serving customers across all 50 US states, Canada, and parts of Europe.',
+      'Built and managed up to three engineering teams delivering native iOS, Android, web, GraphQL, and data pipeline systems.',
       'Designed AWS platform foundations and backend services using TypeScript, Node.js, Python, and GraphQL.',
       'Balanced hands-on engineering with team leadership, hiring, standards, and technical direction.',
     ],
@@ -104,11 +101,11 @@ const signals = [
       'Ten runnable vulnerable agents, one per OWASP LLM Top 10 category, with an attacker payload library, evaluation harness, spotlighting defense toggle, and a writeup per category.',
   },
   {
-    label: 'Conference Talk',
+    label: 'Presentation',
     title: 'Breaking Agents to Build Better Ones',
     href: `${base}/talks/summit-owasp-llm-top-10`,
     details:
-      'An accepted hands-on lab talk on the OWASP Top 10 for LLM Applications, with slides, speaker notes, and a live demo runbook.',
+      'Presentation material for a hands-on lab on the OWASP Top 10 for LLM Applications, with slides, speaker notes, and a live demo runbook.',
   },
   {
     label: 'Lab Writeup',
@@ -165,9 +162,9 @@ const signals = [
           {resume.badges.map((badge) => <li>{badge}</li>)}
         </ul>
         <p class="resume-actions">
-          <button type="button" class="pdf-button" data-print-resume>
-            Download PDF
-          </button>
+          <a class="pdf-button" href={`${base}/downloads/shawn-campbell-resume.pdf`} download>
+            Download resume PDF (2 pages)
+          </a>
         </p>
       </div>
 
@@ -274,6 +271,7 @@ const signals = [
         <span class="direct-only">Contact</span>
       </h2>
       <nav class="contact-links" aria-label="Professional links">
+        <a href="mailto:shawn@sandkcampbell.com">shawn@sandkcampbell.com</a>
         <a href="https://www.linkedin.com/in/shawnmcampbell">LinkedIn</a>
         <a href="https://github.com/jaegerpicker">GitHub</a>
         <a href="https://github.com/jaegerpicker/small_screens_big_worlds/tree/main/lab">AI Security Lab</a>
@@ -281,11 +279,6 @@ const signals = [
       </nav>
     </section>
   </article>
-
-<script>
-  const trigger = document.querySelector('[data-print-resume]');
-  trigger?.addEventListener('click', () => window.print());
-</script>
 </BaseLayout>
 
 <style>

@@ -6,9 +6,11 @@ draft: false
 tags: ["prompt-injection", "owasp-llm-top-10", "agentic-ai", "llm-security", "rag"]
 ---
 
-> **Draft.** This post is based on the local v0 RAG prompt-injection lab. The
-> lab uses an owned local target, a synthetic flag, and no third-party LLM
-> applications.
+> **Experimental lab note.** This is a deterministic local demonstration, not
+> a measurement of real-model resistance to prompt injection. The target uses
+> an owned local service, a synthetic flag, and no third-party LLM applications.
+> The reported comparison covers only the in-process target and fixed payloads;
+> HTTP defense configuration and real-model behavior are not validated here.
 
 I learn security best when I can run the bug myself.
 
@@ -96,7 +98,7 @@ Each payload counts as successful when:
 - the observed action is `exfiltrate_flag`, and
 - the response includes the synthetic lab flag.
 
-The vulnerable baseline result was:
+The deterministic in-process baseline result was:
 
 ```text
 defense OFF: 1.0 attack_success_rate
@@ -125,12 +127,17 @@ The action selector then ignores instruction triggers from spotlighted content.
 The attacker-controlled support note can still appear as source material, but
 it no longer gets to decide which action the assistant calls.
 
-With the defense enabled, the measured result was:
+With the deterministic defense enabled, the in-process result was:
 
 ```text
 defense ON: 0.0 attack_success_rate
 absolute reduction: 1.0
 ```
+
+The target does not invoke an LLM: `choose_action()` searches retrieved text
+for the literal `exfiltrate_flag` trigger and skips spotlighted documents.
+The 100% to 0% change demonstrates that programmed action-selection boundary
+on these three synthetic payloads. It is not measured real-model resistance.
 
 That does not prove spotlighting is a complete production defense. It proves
 something smaller and more useful: for this local target and payload set,
@@ -173,26 +180,14 @@ Those questions are more useful than arguing whether prompt injection is
 injection is part of the operating environment and design the system around
 that fact.
 
-## What Comes Next
+## Validation Scope
 
-This was the first complete loop:
-
-```text
-target -> attack -> baseline -> defense -> comparison -> writeup
-```
-
-The next `LLM01` improvements are straightforward:
-
-- Add live HTTP mode to the attack harness.
-- Add richer eval metadata.
-- Expand the payload set.
-- Normalize the lab under the OWASP module structure.
-
-After that, the next major module I want to build is `LLM03:2025` Supply Chain.
-That one is especially interesting for coding agents: a compromised package can
-plant malicious instructions in docs, comments, generated files, or vendored
-dependency content. If an AI agent reads that content with tool access, the
-supply-chain attack can become an agent-control problem.
+The result above covers a deterministic, in-process demonstration only. The
+repository also contains HTTP tooling and additional OWASP modules, but those
+are not evidence of real-model resistance. A static review raised a possible
+HTTP evaluator OFF/ON configuration mismatch; that remains a hypothesis, not
+a confirmed result. A future validation would need to verify the target's
+actual defense state and record the target, payload set, and model configuration.
 
 That is the broader point of this series. The best way to build safer agents is
 to build small broken ones first, attack them honestly, and carry the lessons

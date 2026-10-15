@@ -20,12 +20,12 @@ assert.match(orbitMap, /<ul/);
 assert.match(orbitMap, /href=/);
 assert.match(content, /export const systems/);
 assert.match(content, /export const missions/);
-assert.match(content, /trust boundary/);
-assert.match(content, /Flight proven/);
-assert.match(content, /Active focus/);
-assert.match(content, /Security Event Response/);
-assert.match(content, /Offensive Security/);
+assert.match(content, /Trust Boundary/);
+assert.match(content, /Mobile Engineering/);
+assert.match(content, /Interactive Products/);
 assert.match(content, /Engineering Leadership/);
-assert.match(content, /AI Security Research/);
+assert.match(content, /Application Security/);
+assert.match(content, /AI Security Lab/);
+assert.match(content, /prototype/i);
 
 console.log('publication shell tests passed');

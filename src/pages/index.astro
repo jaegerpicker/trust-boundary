@@ -8,9 +8,8 @@ import { missions } from '../data/site-content';
 import { now } from '../data/site-content';
 
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
-const posts = (await getCollection('blog', ({ data }) => !data.draft))
-  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
-  .slice(0, 5);
+const posts = (await getCollection('blog', ({ data }) => data.featured && (import.meta.env.DEV || !data.draft)))
+  .sort((a, b) => (b.data.pubDate?.valueOf() ?? 0) - (a.data.pubDate?.valueOf() ?? 0));
 
 ---
 
@@ -36,6 +35,18 @@ const posts = (await getCollection('blog', ({ data }) => !data.draft))
       </div>
     </div>
     <OrbitMap />
+  </section>
+
+  <section class="now-panel" aria-labelledby="professional-heading">
+    <h2 id="professional-heading">Hands-on product engineering and leadership</h2>
+    <p>Engineering Manager at Brivo. I have 25+ years in software engineering, with experience spanning mobile and web products, engineering leadership, platform architecture, application security, and applied AI.</p>
+    <p>Open to conversations about Staff/Principal mobile and product engineering, plus selected hands-on leadership roles. Remote US.</p>
+    <nav class="hero-actions" aria-label="Professional resources">
+      <a href={`${base}/resume`}>View resume</a>
+      <a href="https://www.linkedin.com/in/shawnmcampbell">LinkedIn</a>
+      <a href="https://github.com/jaegerpicker">GitHub</a>
+      <a href="mailto:shawn@sandkcampbell.com">Email Shawn</a>
+    </nav>
   </section>
 
   <section class="now-panel" aria-labelledby="now-heading">
@@ -89,7 +100,7 @@ const posts = (await getCollection('blog', ({ data }) => !data.draft))
       <div class="post-grid">
         {posts.map((post) => (
           <a class="signal-card" href={`${base}/blog/${post.id}`}>
-            <span class="signal-card__label">Post</span>
+            <span class="signal-card__label">{post.data.draft ? 'Draft / local review' : 'Project note'}</span>
             <span class="signal-card__title">{post.data.title}</span>
             <p class="muted">{post.data.description}</p>
           </a>
@@ -152,6 +163,7 @@ const posts = (await getCollection('blog', ({ data }) => !data.draft))
   }
 
   .hero-copy {
+    min-width: 0;
     align-self: center;
     padding: clamp(2.5rem, 7vw, 5rem) clamp(1.25rem, 5vw, 4.5rem);
   }
@@ -270,7 +282,8 @@ const posts = (await getCollection('blog', ({ data }) => !data.draft))
     }
 
     .home-hero h1 {
-      font-size: clamp(2.85rem, 15vw, 4.5rem);
+      font-size: clamp(2rem, 11vw, 3.6rem);
+      overflow-wrap: anywhere;
     }
 
     .mission-board > header {

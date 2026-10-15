@@ -1,9 +1,6 @@
 # Trust Boundary
 
-Shawn Campbell's publication and portfolio for AI security research,
-application security, secure mobile engineering, React and React Native product
-systems, and AI-assisted development. Built with [Astro](https://astro.build)
-and deployed to GitHub Pages.
+Shawn Campbell's publication and portfolio for mobile, web, and interactive product engineering, hands-on leadership, platform architecture, applied AI, and application security. Built with [Astro](https://astro.build) and deployed to GitHub Pages.
 
 Live site: <https://sandkcampbell.com/>
 
@@ -51,21 +48,13 @@ components.
 
 ## Editorial direction
 
-- 45% AI security research and red teaming
-- 20% application security and security event response
-- 20% agentic and AI-assisted development methodology
-- 15% engineering leadership and systems practice
+Product engineering leads the positioning: mobile, web, and interactive experiences, supported by platform architecture, hands-on leadership, applied AI, and application security. Existing security writing stays available as part of that broader practice.
 
-Recommended first sequence:
-
-1. What I Learned Building Production Agents
-2. Breaking Agents: LLM01 Prompt Injection
-3. Shai-Hulud and AI Tooling Security
-4. Secure Mobile Product Patterns Worth Keeping
+Side projects can support selected work and build logs when evidence is ready. Label prototypes and outstanding human/device validation honestly. Distinguish Codex/Claude assisting development from AI running inside a product. Do not imply shipped status, on-device integration, metrics, or a posting schedule without evidence and approval.
 
 ## Presentation package
 
-The accepted OWASP LLM Top 10 lab talk lives in
+The OWASP LLM Top 10 lab presentation package lives in
 `talks/summit-owasp-llm-top-10/`.
 
 - Repo-native slide source: `talks/summit-owasp-llm-top-10/slides.md`

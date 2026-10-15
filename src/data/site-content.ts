@@ -1,245 +1,238 @@
-/*
- * Positioning copy for the site.
- *
- * Facts that do not change with positioning, such as experience history,
- * earlier work, writing, and links, stay in their pages.
- */
+// Product engineering leads; applied AI and security support it.
 
 export const meta = {
-  description:
-    'AI security research, red teaming, security event response, and engineering leadership by Shawn Campbell.',
-  rssDescription:
-    'AI security research, red teaming, agentic development, and security field notes.',
+  "description": "Mobile, web, and interactive product engineering by Shawn Campbell, with hands-on leadership, platform architecture, applied AI, and application security.",
+  "rssDescription": "Product engineering, mobile and web development, interactive prototypes, and AI-assisted development notes."
 };
 
 export const home = {
-  title: 'Trust Boundary — Shawn Campbell',
-  description:
-    'AI security research, red teaming, security event response, and engineering leadership by Shawn Campbell.',
-  kickerOps: 'Security status / active and operational',
-  kickerDirect: 'AI Security and Engineering Leadership',
-  headline: 'Everything interesting happens at the',
-  headlineEmphasis: 'trust boundary',
-  missionCopy:
-    "I build and break software systems with a security engineer's bias for evidence. The current focus is AI security research, red teaming, and response when systems fail, with the engineering leadership to turn findings into practice.",
-  primaryActionOps: 'Open the security board',
-  primaryActionDirect: 'View security work',
-  secondaryActionOps: 'Read field notes',
-  secondaryActionDirect: 'Read security writing',
-  workHeadingOps: 'Systems worth testing under pressure',
-  workHeadingDirect: 'AI security research and red-team work',
-  workIntro:
-    'Runnable AI security research, red-team practice, security event response, and the engineering leadership that turns findings into shipped controls.',
-  courseId: 'security-lab',
-  courseHeading: 'Making AI security executable',
-  courseBody:
-    'I am building vulnerable-agent labs, attack harnesses, and practical writeups around the OWASP LLM Top 10. The goal is to turn vague AI risk into runnable examples, observable failures, and defensible mitigations.',
-  rigorKickerDirect: 'Security Discipline',
-  rigorHeading: 'Security is the engineering baseline.',
-  rigorBody:
-    'Threat modeling, permissions, storage, trust boundaries, and failure modes are treated as normal engineering constraints, not after-the-fact review rituals.',
-  latestHeading: 'Security notes from the field',
+  "title": "Trust Boundary — Shawn Campbell | Mobile & Product Engineering",
+  "description": "Mobile, web, and interactive product engineering by Shawn Campbell, with hands-on leadership, platform architecture, applied AI, and application security.",
+  "kickerOps": "Product systems / build and explore",
+  "kickerDirect": "Mobile, Web, and Interactive Products",
+  "headline": "Thoughtful products.",
+  "headlineEmphasis": "Reliable engineering",
+  "missionCopy": "I build thoughtful, reliable mobile and interactive products, and help teams deliver them. My background spans engineering leadership, platform architecture, application security, and applied AI.",
+  "primaryActionOps": "Explore the build",
+  "primaryActionDirect": "Explore product work",
+  "secondaryActionOps": "Read field notes",
+  "secondaryActionDirect": "Read engineering notes",
+  "workHeadingOps": "From idea to working system",
+  "workHeadingDirect": "Products, platforms, and the craft of building",
+  "workIntro": "Hands-on mobile and web engineering, interactive prototypes, and technical leadership. Applied AI helps me build and investigate; application security informs how I design and verify.",
+  "courseId": "interactive-products",
+  "courseHeading": "Building interactive experiences with AI-assisted development",
+  "courseBody": "My side-project interests include mobile apps, web experiences, and card-game prototypes. Codex and Claude assist development; AI running inside a product is a separate capability that needs its own implementation and validation.",
+  "rigorKickerDirect": "Engineering Practice",
+  "rigorHeading": "Reliability is part of the experience.",
+  "rigorBody": "Clear architecture, testing, production-error investigation, accessibility, and application security support products people can use with confidence. AI-assisted work still needs engineering judgment and verification.",
+  "latestHeading": "Project notes and experiments"
 };
 
-/*
- * Short current-focus block on the homepage. Refresh the date and lines
- * whenever the focus moves; monthly is enough.
- */
 export const now = {
-  updated: 'September 2026',
-  lines: [
-    'Red-teaming AI features in production and mapping where agent tool use crosses trust boundaries.',
-    'Building the runnable OWASP LLM Top 10 lab: ten vulnerable agents, an attacker payload library, and a spotlighting defense toggle.',
-    'Writing up prompt-injection findings from the RAG lab.',
-  ],
+  "updated": "October 2026",
+  "lines": [
+    "Engineering Manager at Brivo, with a hands-on background across mobile, web, cloud, and connected systems.",
+    "Using AI-enabled planning, review, development, testing, and verification, including production-error investigation and build/test failure triage.",
+    "Exploring mobile, web, and game prototypes. Human playtesting and device validation remain part of the work."
+  ]
 };
 
 export const systems = [
   {
-    id: 'lab',
-    opsLabel: 'AI Security Lab',
-    directLabel: 'AI Security Research',
-    detail: 'Runnable OWASP LLM Top 10 labs, vulnerable agents, prompt injection, and defense experiments.',
-    status: 'Active focus',
-    href: '#security-lab',
+    "id": "mobile",
+    "opsLabel": "Mobile Products",
+    "directLabel": "Mobile Engineering",
+    "detail": "Native and cross-platform mobile systems and product delivery.",
+    "status": "Experience",
+    "href": "#selected-work"
   },
   {
-    id: 'redteam',
-    opsLabel: 'Red Team',
-    directLabel: 'Offensive Security',
-    detail: 'Application-layer penetration testing, vulnerability research, and proof-of-concept exploits.',
-    status: 'Flight proven',
-    href: '#selected-work',
+    "id": "interactive",
+    "opsLabel": "Interactive Lab",
+    "directLabel": "Interactive Products",
+    "detail": "Web and game prototypes, interaction, and iteration.",
+    "status": "In development",
+    "href": "#interactive-products"
   },
   {
-    id: 'response',
-    opsLabel: 'Event Response',
-    directLabel: 'Security Event Response',
-    detail: 'Triage, containment, and postmortems that turn incidents into durable engineering controls.',
-    status: 'Operational',
-    href: '#selected-work',
+    "id": "ai",
+    "opsLabel": "AI-Assisted Build",
+    "directLabel": "Applied AI",
+    "detail": "AI-enabled development with engineering review and verification.",
+    "status": "Working method",
+    "href": "#interactive-products"
   },
   {
-    id: 'rigor',
-    opsLabel: 'Systems Rigor',
-    directLabel: 'Engineering Leadership',
-    detail: 'Technical direction, team formation, security standards, and delivery discipline.',
-    status: 'Embedded discipline',
-    href: '#systems-rigor',
-  },
+    "id": "rigor",
+    "opsLabel": "Systems Rigor",
+    "directLabel": "Engineering Leadership",
+    "detail": "Architecture, reliability, application security, and team delivery.",
+    "status": "Embedded practice",
+    "href": "#systems-rigor"
+  }
 ];
 
 export const missions = [
   {
-    label: '01 / AI Security',
-    directLabel: 'AI Security Research',
-    title: 'Executable security research for agentic systems',
-    summary:
-      'OWASP LLM Top 10 labs, vulnerable agents, attack harnesses, and writeups that make AI risks observable instead of abstract.',
-    status: 'Active focus',
-    href: '/blog',
-    tone: 'cyan',
+    "label": "01 / Product",
+    "directLabel": "Mobile and Web Engineering",
+    "title": "Build the experience and the systems behind it",
+    "summary": "Native iOS and Android, React Native, web applications, APIs, and connected-device platforms, with hands-on architecture and delivery experience.",
+    "status": "Experience",
+    "href": "/resume",
+    "tone": "cyan"
   },
   {
-    label: '02 / Red Team',
-    directLabel: 'Red Team and Response',
-    title: 'Attacker-informed testing that changes engineering priorities',
-    summary:
-      'Application-layer penetration testing, vulnerability research, proof-of-concept exploits, and the response and postmortem work that follows a real event.',
-    status: 'Flight proven',
-    href: '/resume',
-    tone: 'amber',
+    "label": "02 / Interactive",
+    "directLabel": "Interactive Prototypes",
+    "title": "Explore playful, thoughtful interactions",
+    "summary": "Mobile, web, and game prototypes are a space to test ideas and learn. Current game work still needs human playtesting and device validation.",
+    "status": "In development",
+    "href": "/projects",
+    "tone": "amber"
   },
   {
-    label: '03 / Leadership',
-    directLabel: 'Engineering Leadership',
-    title: 'Security practice that survives contact with delivery',
-    summary:
-      'Threat modeling, secure development lifecycle, standards, and team formation that keep security inside normal engineering work instead of beside it.',
-    status: 'Embedded discipline',
-    href: '/projects',
-    tone: 'green',
-  },
+    "label": "03 / Leadership",
+    "directLabel": "Engineering Leadership",
+    "title": "Help teams turn ideas into reliable products",
+    "summary": "Technical direction, mentoring, platform architecture, and delivery practice, supported by application security and AI-enabled development.",
+    "status": "Hands-on practice",
+    "href": "/about",
+    "tone": "green"
+  }
 ];
 
 export const projects = {
-  title: 'Security Projects — Trust Boundary',
-  description:
-    'AI security research, red teaming, security event response, and engineering leadership by Shawn Campbell.',
-  kickerOps: 'Shipyard / Security Manifest',
-  kickerDirect: 'Security Projects and Capabilities',
-  headingOps: 'Security work in progress',
-  headingDirect: 'AI security and red-team work',
-  intro:
-    'Runnable AI security research, red-team practice, and the application security and response work that surrounds them. Platform and product engineering is the depth underneath, not the headline.',
-  areas: [
+  "title": "Product Engineering & Experiments — Trust Boundary",
+  "description": "Mobile, web, and interactive product engineering by Shawn Campbell, with hands-on leadership, platform architecture, applied AI, and application security.",
+  "kickerOps": "Shipyard / Product Manifest",
+  "kickerDirect": "Product Engineering and Experiments",
+  "headingOps": "Products, platforms, and prototypes",
+  "headingDirect": "Building mobile, web, and interactive experiences",
+  "intro": "My background combines product delivery and platform engineering. The work below distinguishes professional experience, prototype exploration, development methods, and public security research.",
+  "areas": [
     {
-      code: '01',
-      opsLabel: 'AI Security Lab',
-      directLabel: 'AI Security Research',
-      status: 'Active focus',
-      summary:
-        'Ten runnable vulnerable agents, one per OWASP LLM Top 10 category, with an attacker payload library, an evaluation harness, a spotlighting defense toggle, and a writeup for each.',
-      evidence: ['OWASP LLM Top 10', 'Prompt injection', 'Agent tooling', 'Security writeups'],
+      "code": "01",
+      "opsLabel": "Product Systems",
+      "directLabel": "Mobile and Web Product Engineering",
+      "status": "Professional experience",
+      "summary": "Native iOS and Android, React Native and TypeScript products, GraphQL APIs, cloud services, and connected-device platforms. Experience includes hands-on architecture, technical direction, and engineering team leadership.",
+      "evidence": [
+        "Swift and Kotlin",
+        "React Native and TypeScript",
+        "APIs and platforms",
+        "Hands-on leadership"
+      ]
     },
     {
-      code: '02',
-      opsLabel: 'Red Team',
-      directLabel: 'Red Team and Offensive Security',
-      status: 'Flight proven',
-      summary:
-        'Internal red-team operations, application-layer penetration testing, vulnerability research, and proof-of-concept exploit development that turns findings into engineering priorities.',
-      evidence: ['Penetration testing', 'Vulnerability research', 'Exploit PoCs', 'Secure code review'],
+      "code": "02",
+      "opsLabel": "Interactive Lab",
+      "directLabel": "Card-Game Prototype",
+      "status": "Prototype / validation in progress",
+      "summary": "An exploration of interactive card-game design and AI opponent behavior. Human playtesting and device validation remain outstanding. Local AI is an area of exploration, not a verified product capability presented here.",
+      "evidence": [
+        "Interactive systems",
+        "Game rules",
+        "Prototype iteration",
+        "Human and device validation pending"
+      ]
     },
     {
-      code: '03',
-      opsLabel: 'AppSec and Response',
-      directLabel: 'Application Security and Event Response',
-      status: 'Flight proven',
-      summary:
-        'Threat modeling, trust-boundary analysis, CI/CD hardening, and the triage, containment, and postmortem work that follows a security event.',
-      evidence: ['Threat modeling', 'Trust boundaries', 'Incident triage', 'Postmortems'],
+      "code": "03",
+      "opsLabel": "AI-Assisted Build",
+      "directLabel": "AI-Assisted Development",
+      "status": "Development method",
+      "summary": "Codex and Claude assist planning and implementation. My AI-enabled workflow includes review, testing, verification, production-error investigation, and build/test failure triage. Development assistance does not establish that a product contains AI.",
+      "evidence": [
+        "Planning and review",
+        "Development and testing",
+        "Verification",
+        "Failure triage"
+      ]
     },
     {
-      code: '04',
-      opsLabel: 'Platform Depth',
-      directLabel: 'Platform and Product Depth',
-      status: 'Supporting evidence',
-      summary:
-        'Two decades of distributed IoT, smart-access, cloud, mobile, and API systems in Swift, Kotlin, C++, TypeScript, Go, Python, and GraphQL. This is the working knowledge behind the security work, not a separate practice.',
-      evidence: ['Distributed systems', 'IoT and cloud', 'Native mobile', 'GraphQL and APIs'],
-    },
+      "code": "04",
+      "opsLabel": "Security Practice",
+      "directLabel": "Application Security and AI Security Lab",
+      "status": "Supporting practice / public research",
+      "summary": "Application security, threat modeling, and secure code review inform product decisions. The public OWASP LLM Top 10 lab includes a deterministic RAG demonstration with explicit limits; its results do not measure real-model resistance.",
+      "evidence": [
+        "Application Security",
+        "AI Security Lab",
+        "Trust boundaries",
+        "Experimental caveats"
+      ]
+    }
   ],
-  caseStudyNote:
-    'Future entries will include role, constraints, decisions, implementation, security assumptions, outcome, screenshots or runnable evidence, and lessons learned. No invented metrics and no inflated claims.',
+  "caseStudyNote": "Prototype status is stated explicitly. AI-assisted development and AI inside a product are different claims; working code, human feedback, and device validation matter to both."
 };
 
 export const about = {
-  lead:
-    "I'm Shawn Campbell, an AI security researcher, red-team practitioner, and engineering leader with 26 years building software and the teams that ship it, five of them in penetration testing and red-team practice.",
-  paragraphs: [
-    'AI security is the current center of gravity: runnable OWASP LLM Top 10 labs, vulnerable agents, prompt-injection research, and defense experiments, alongside the application security, red-team practice, and event response that surround them.',
-    'Agentic and AI-assisted development is part of the method rather than a separate topic. I build with coding agents and generative tooling and study how they fail: tool-use boundaries, provenance, supply-chain exposure, and the review practice that keeps engineering judgment human. Two decades of product and platform engineering sit underneath all of it as working knowledge, not as the headline.',
+  "lead": "I'm Shawn Campbell. I build thoughtful, reliable mobile and interactive products, and help teams deliver them. I have 25+ years in software engineering, with experience spanning mobile and web products, engineering leadership, platform architecture, application security, and applied AI.",
+  "paragraphs": [
+    "I enjoy the work where an idea becomes something people can interact with: a mobile app, a web experience, or a game prototype. My professional background includes native and cross-platform mobile development, APIs, cloud services, and connected-device systems, alongside building and leading engineering teams.",
+    "Codex and Claude assist my development workflow. I use AI-enabled planning, review, development, testing, and verification, including production-error investigation and build/test failure triage. AI inside a product is a separate design and validation problem; a prototype is not evidence of a shipped capability.",
+    "Application security remains part of my engineering practice. Trust boundaries, permissions, secure design, and observable failure modes help me build reliable products. My public security labs and talk deck are supporting work within that broader practice."
   ],
-  direction:
-    'Build runnable AI security labs, publish practical field notes, respond well when systems fail, and keep engineering leadership close enough to make the recommendations usable.',
+  "direction": "Open to conversations about Staff/Principal mobile and product engineering, plus selected hands-on engineering leadership roles. Remote US."
 };
 
 export const resume = {
-  description:
-    'Mission dossier for Shawn Campbell: AI security research, red-team practice, security event response, and engineering leadership.',
-  roleLine:
-    'AI security researcher, red-team practitioner, and hands-on engineering leader.',
-  summary:
-    'Twenty-six years building software and engineering teams, five of them in penetration testing and red-team practice. Shawn Campbell works where agents, applications, devices, and the teams shipping them meet: AI threat research, application security, red-team operations, and response when something goes wrong. Two decades of product and platform engineering sit underneath that as working knowledge rather than the headline.',
-  badges: ['AI Security', 'Red Team', 'Security Event Response', 'Engineering Leadership', 'Applied AI Research'],
-  telemetry: [
-    { term: 'Operating Mode', value: 'Principal IC / technical lead / security partner' },
-    { term: 'Primary Focus', value: 'AI security research, red teaming, security event response, engineering leadership' },
-    { term: 'Signal', value: '26 years building systems and teams, 5 years red teaming' },
+  "description": "Shawn Campbell: 25+ years in software engineering, with experience in mobile and web products, leadership, platform architecture, applied AI, and application security.",
+  "roleLine": "Hands-on mobile and product engineer. Engineering leader.",
+  "summary": "I have 25+ years in software engineering, with experience spanning mobile and web products, engineering leadership, platform architecture, application security, and applied AI. I build thoughtful, reliable products and help teams deliver them, combining hands-on engineering, platform architecture, applied AI, and application security.",
+  "badges": [
+    "Mobile and Web",
+    "Product Engineering",
+    "Interactive Systems",
+    "Engineering Leadership",
+    "Applied AI"
   ],
-  capabilitiesHeading: 'Security-First Engineering Surface',
-  capabilities: [
+  "telemetry": [
     {
-      label: 'AI Security Research',
-      details:
-        'A runnable OWASP LLM Top 10 lab: ten vulnerable agents, one per category, with an attacker payload library, an evaluation harness, a spotlighting defense toggle, and a writeup for each. Indirect prompt injection through RAG is carried furthest, from attack path to measured defense.',
+      "term": "Current Role",
+      "value": "Engineering Manager at Brivo / hands-on technical leader"
     },
     {
-      label: 'Red-Team Methodology',
-      details:
-        'Internal red-team operations, application-layer penetration testing, vulnerability research, proof-of-concept exploit development, and secure code review that turns findings into engineering priorities.',
+      "term": "Conversations",
+      "value": "Staff/Principal mobile and product engineering; selected hands-on leadership roles"
     },
     {
-      label: 'Security Architecture',
-      details:
-        'Threat modeling, application security assessments, secure API and GraphQL design, trust-boundary analysis, and cloud-native guardrails.',
-    },
-    {
-      label: 'Security Event Response',
-      details:
-        'Triage and response for security events, including supply-chain compromise in AI developer tooling, with postmortems turned into durable engineering controls.',
-    },
-    {
-      label: 'Agentic and AI-Assisted Development',
-      details:
-        'Building with coding agents and generative tooling, and the review practice that keeps engineering judgment human: tool-use boundaries, provenance, and failure modes treated as design inputs.',
-    },
-    {
-      label: 'Engineering Leadership',
-      details:
-        'Principal-level technical direction, team formation, security standards, mentoring, and cross-functional execution across security, product, and platform teams.',
-    },
-    {
-      label: 'Platform and Systems Depth',
-      details:
-        'Distributed IoT, smart-access, cloud, and data-pipeline systems across AWS and GCP, built in Swift, Kotlin, C++, TypeScript, Go, Python, Java, and GraphQL.',
-    },
+      "term": "Location Preference",
+      "value": "Remote US"
+    }
   ],
+  "capabilitiesHeading": "Product Engineering and Delivery",
+  "capabilities": [
+    {
+      "label": "Mobile and Web Product Engineering",
+      "details": "Native iOS and Android, React Native, TypeScript, web applications, and APIs. Hands-on product architecture across Swift, Kotlin, C++, Java, and GraphQL."
+    },
+    {
+      "label": "Platform and Systems Depth",
+      "details": "Distributed IoT, smart-access, cloud, and data-pipeline systems across AWS and GCP, built in Swift, Kotlin, C++, TypeScript, Go, Python, Java, and GraphQL."
+    },
+    {
+      "label": "Engineering Leadership",
+      "details": "Technical direction, team formation, mentoring, and cross-functional execution across product, mobile, and platform teams. Hands-on engineering remains part of the work."
+    },
+    {
+      "label": "Agentic and AI-Assisted Development",
+      "details": "AI-enabled SDLC planning, review, development, testing, and verification; production-error investigation and build/test failure triage, with human engineering judgment guiding decisions."
+    },
+    {
+      "label": "Application Security",
+      "details": "Threat modeling, secure code review, application-layer testing, and trust-boundary analysis as part of product architecture and delivery."
+    },
+    {
+      "label": "AI Security Research",
+      "details": "A runnable OWASP LLM Top 10 lab: ten vulnerable agents, one per category, with an attacker payload library, an evaluation harness, a spotlighting defense toggle, and a writeup for each. The deterministic RAG lab demonstrates an attack path and a measured defense on synthetic fixtures; it is not a production-model evaluation."
+    }
+  ]
 };
 
 export const blog = {
-  description: 'AI security research, red teaming, agentic development, and security field notes.',
-  intro:
-    'AI security research and red-team practice lead the archive, with security event response, agentic development methodology, and engineering-leadership notes alongside.',
+  "description": "Engineering notes on mobile, web, interactive products, AI-assisted development, and application security.",
+  "intro": "Mobile, web, and game projects are my current focus. Project articles are in draft review. Earlier application-security and AI-lab writing remains available in this archive."
 };
