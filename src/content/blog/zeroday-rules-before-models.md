@@ -1,4 +1,5 @@
 ---
+audience: product
 title: "ZeroDay: Building the Card Game Before Trusting the Opponent"
 description: "Draft notes on deterministic rules, constrained opponent decisions, campaign saves, and separating simulation evidence from human play."
 draft: true

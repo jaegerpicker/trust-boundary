@@ -1,14 +1,16 @@
 ---
 import { getCollection } from 'astro:content';
+import { isDiscoverable, isSecurity } from '../lib/content-mode';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import MissionCard from '../components/MissionCard.astro';
 import OrbitMap from '../components/OrbitMap.astro';
+import { professional } from '../data/site-content';
 import { home } from '../data/site-content';
 import { missions } from '../data/site-content';
 import { now } from '../data/site-content';
 
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
-const posts = (await getCollection('blog', ({ data }) => data.featured && (import.meta.env.DEV || !data.draft)))
+const posts = (await getCollection('blog', ({ data }) => isDiscoverable(data) && (isSecurity || data.featured)))
   .sort((a, b) => (b.data.pubDate?.valueOf() ?? 0) - (a.data.pubDate?.valueOf() ?? 0));
 
 ---
@@ -38,9 +40,9 @@ const posts = (await getCollection('blog', ({ data }) => data.featured && (impor
   </section>
 
   <section class="now-panel" aria-labelledby="professional-heading">
-    <h2 id="professional-heading">Hands-on product engineering and leadership</h2>
-    <p>Engineering Manager at Brivo. I have 25+ years in software engineering, with experience spanning mobile and web products, engineering leadership, platform architecture, application security, and applied AI.</p>
-    <p>Open to conversations about Staff/Principal mobile and product engineering, plus selected hands-on leadership roles. Remote US.</p>
+    <h2 id="professional-heading">{professional.heading}</h2>
+    <p>{professional.summary}</p>
+    <p>{professional.direction}</p>
     <nav class="hero-actions" aria-label="Professional resources">
       <a href={`${base}/resume`}>View resume</a>
       <a href="https://www.linkedin.com/in/shawnmcampbell">LinkedIn</a>

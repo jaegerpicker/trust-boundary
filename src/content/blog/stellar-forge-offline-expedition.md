@@ -1,4 +1,5 @@
 ---
+audience: product
 title: "Stellar Forge: Making a Space Strategy Prototype Understandable"
 description: "Draft project notes on a local expedition loop, readable decisions, save integrity, and the limits of automated game verification."
 draft: true

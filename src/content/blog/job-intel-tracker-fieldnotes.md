@@ -1,4 +1,5 @@
 ---
+audience: product
 title: "Job Intel Tracker: Building Fieldnotes Around Evidence and Clear Ownership"
 description: "Draft project notes on a web and mobile workspace, authorized agent contributions, privacy boundaries, and the difference between source readiness and an announcement."
 draft: true

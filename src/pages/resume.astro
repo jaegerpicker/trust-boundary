@@ -1,11 +1,12 @@
 ---
 import { getCollection } from 'astro:content';
+import { isDiscoverable } from '../lib/content-mode';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { resume } from '../data/site-content';
 
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 const publishedPosts = new Set(
-  (await getCollection('blog', ({ data }) => import.meta.env.DEV || !data.draft)).map((post) => post.id),
+  (await getCollection('blog', ({ data }) => isDiscoverable(data))).map((post) => post.id),
 );
 
 
