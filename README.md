@@ -13,7 +13,56 @@ npm run build
 npm run preview
 ```
 
-Drafts (`draft: true` in frontmatter) are visible in dev, hidden in production.
+Drafts (`draft: true` in frontmatter) are excluded from routes and discovery in both dev and production. Review their Markdown source locally. Changing content mode never publishes a draft.
+
+## Content mode and reversible commits
+
+`site-mode.json` is the only build-time content switch. Its committed default is
+`{ "mode": "product" }`, preserving the current live positioning. To prepare a
+security version, change it to `{ "mode": "security" }`. Invalid values fail the
+build. There is no environment, query-string, or browser-storage override; the
+Ops/Direct toggle changes presentation only.
+
+From your issue branch, make each mode change as a small independent commit:
+
+```bash
+# Set site-mode.json to { "mode": "security" }, then:
+npm run test:modes
+git add site-mode.json
+git commit -m "Switch site content to security"
+
+# Later set site-mode.json to { "mode": "product" }, then:
+npm run test:modes
+git add site-mode.json
+git commit -m "Switch site content to product engineering"
+```
+
+No content deletion, divergent branch, or draft flag change is needed. These
+commands create local commits; review separately before pushing or deploying.
+`npm run test:modes` builds both modes with synthetic shared/product/security
+articles and drafts, restores the original setting and removes fixtures, then
+builds the clean original mode. It also verifies development-server draft isolation
+in both modes and exercises failure cleanup: failed runs remove synthetic build
+output while restoring the original setting and removing their source fixtures.
+Do not edit the config concurrently with this test.
+
+| Surface | Product mode | Security mode |
+| --- | --- | --- |
+| Homepage, navigation, Projects, About, resume introduction/capabilities, metadata | Product positioning | Security positioning |
+| Homepage writing | Published featured items | Published security/shared items |
+| Blog, RSS, resume article links | All published items, preserving the existing security archive | Published security/shared items |
+| Direct article routes and sitemap | All published items | All published items, preserving inbound links |
+| Drafts, including featured or dated drafts | Excluded everywhere, including dev | Excluded everywhere, including dev |
+
+`audience` controls discovery, not access. Missing audience means shared. Existing
+public security posts are tagged security; the welcome post is shared; project
+drafts are tagged product. All five existing drafts remain drafts. Only an
+explicitly approved publication should change `draft` and supply `pubDate`.
+Published off-topic URLs remain accessible and indexed in either mode; this is a
+positioning switch, not a privacy control. Article-specific metadata stays with
+its article. The talk, factual employment history, contact links, static branded
+share image, and existing product-oriented PDF resume are shared and unchanged;
+the PDF download remains the existing general career record.
 
 ## Writing a post
 
@@ -25,6 +74,7 @@ title: "..."
 description: "..."
 pubDate: 2026-05-13
 draft: true            # optional; defaults to false
+audience: shared      # product, security, or shared (default)
 tags: ["..."]          # optional
 format: "flight-log"   # optional
 ---

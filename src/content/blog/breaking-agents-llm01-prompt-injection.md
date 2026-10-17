@@ -1,4 +1,5 @@
 ---
+audience: security
 title: "Breaking Agents to Build Better Ones: LLM01 Prompt Injection"
 description: "A hands-on RAG prompt-injection lab for learning OWASP LLM01:2025, measuring attack success rate, and testing a simple spotlighting defense."
 pubDate: 2026-05-14

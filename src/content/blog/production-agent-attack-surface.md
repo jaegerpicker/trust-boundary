@@ -1,4 +1,5 @@
 ---
+audience: security
 title: "What I Learned Building Production Agents (and Why It Terrifies Me as a Security Engineer)"
 description: "Four layers of agent attack surface, five concrete attack patterns from production, and the defenses I've actually shipped."
 pubDate: 2026-05-13

@@ -15,7 +15,8 @@
     "test:profile": "node scripts/test-profile-repositioning.mjs",
     "test:a11y": "node scripts/test-accessibility-contract.mjs",
     "test:lab": "node scripts/run-lab-tests.mjs",
-    "test:drafts": "node scripts/test-draft-isolation.mjs"
+    "test:drafts": "node scripts/test-draft-isolation.mjs",
+    "test:modes": "node --experimental-strip-types scripts/test-content-modes.mjs"
   },
   "dependencies": {
     "@astrojs/mdx": "^8.0.2",

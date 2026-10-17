@@ -1,4 +1,5 @@
 ---
+audience: product
 title: "An Unnamed iOS App: Making Local AI Work Reviewable"
 description: "Draft product notes on saved intent, explicit local generation, source preservation, and checkpoint-specific iPhone validation."
 draft: true
