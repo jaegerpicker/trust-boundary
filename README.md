@@ -41,7 +41,10 @@ No content deletion, divergent branch, or draft flag change is needed. These
 commands create local commits; review separately before pushing or deploying.
 `npm run test:modes` builds both modes with synthetic shared/product/security
 articles and drafts, restores the original setting and removes fixtures, then
-builds the clean original mode. Do not edit the config concurrently with this test.
+builds the clean original mode. It also verifies development-server draft isolation
+in both modes and exercises failure cleanup: failed runs remove synthetic build
+output while restoring the original setting and removing their source fixtures.
+Do not edit the config concurrently with this test.
 
 | Surface | Product mode | Security mode |
 | --- | --- | --- |

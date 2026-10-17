@@ -1,6 +1,8 @@
 import assert from 'node:assert/strict';
-import { readFile, writeFile, readdir, rm } from 'node:fs/promises';
-import { execFileSync } from 'node:child_process';
+import { readFile, writeFile, readdir, rm, access } from 'node:fs/promises';
+import { execFileSync, spawnSync } from 'node:child_process';
+import { fileURLToPath } from 'node:url';
+import { checkDevDrafts } from './check-dev-drafts.mjs';
 import { selectMode, isDiscoverable, isPublished } from '../src/lib/content-mode.ts';
 
 for (const mode of ['product', 'security']) {
@@ -18,6 +20,19 @@ const config = new URL('../site-mode.json', import.meta.url);
 const original = await readFile(config, 'utf8');
 const fixtures = [];
 const output = new URL('../dist/', import.meta.url);
+const injectFailure = process.argv.includes('--fail-after-build');
+if (!injectFailure) {
+  const failure = spawnSync(process.execPath, ['--experimental-strip-types', fileURLToPath(import.meta.url), '--fail-after-build'], {
+    env: { ...process.env, ASTRO_TELEMETRY_DISABLED: '1' }, encoding: 'utf8',
+  });
+  assert.equal(failure.status, 1);
+  assert.match(failure.stderr, /Intentional cleanup regression failure/);
+  assert.equal(await readFile(config, 'utf8'), original);
+  assert.ok(!(await readdir(new URL('../src/content/blog/', import.meta.url))).some(name => name.startsWith('mode-fixture-')));
+  await assert.rejects(access(output), { code: 'ENOENT' });
+  console.log('Failure-path regression: original config restored, fixtures and synthetic output removed.');
+}
+let failure;
 async function walk(dir) {
   const files = [];
   for (const entry of await readdir(dir, { withFileTypes: true })) {
@@ -40,6 +55,7 @@ try {
     execFileSync(process.execPath, ['node_modules/astro/bin/astro.mjs', 'build'], {
       env: { ...process.env, ASTRO_TELEMETRY_DISABLED: '1' }, stdio: 'pipe',
     });
+    if (injectFailure) throw new Error('Intentional cleanup regression failure');
     const read = path => readFile(new URL(path, output), 'utf8');
     const home = await read('index.html');
     const blog = await read('blog/index.html');
@@ -69,6 +85,7 @@ try {
       return source.match(/^title: "(.*)"$/m)[1];
     }));
     const forbidden = [...realDrafts, ...fixtures.filter(f => f.draft).map(f => f.slug)];
+    await checkDevDrafts(mode, forbidden, fixtures, isDiscoverable);
     for (const file of await walk(output)) {
       for (const slug of forbidden) assert.ok(!file.pathname.includes(`/blog/${slug}/`));
       if (/\.(html|xml|json|js|txt)$/.test(file.pathname)) {
@@ -83,10 +100,22 @@ try {
     assert.ok((await read('talks/summit-owasp-llm-top-10/index.html')).includes('Breaking Agents'));
     console.log(`${mode}: complete build, discovery, direct routes, RSS, sitemap, and draft isolation passed`);
   }
+} catch (error) {
+  failure = error;
 } finally {
-  await writeFile(config, original);
-  for (const { file } of fixtures) await rm(file);
+  // Never leave fixture output previewable, even when an assertion/build fails.
+  const cleanup = await Promise.allSettled([
+    writeFile(config, original),
+    ...fixtures.map(({ file }) => rm(file)),
+    rm(output, { recursive: true, force: true }),
+  ]);
+  const errors = cleanup.filter(result => result.status === 'rejected').map(result => result.reason);
+  if (errors.length) {
+    if (failure) console.error('Cleanup also failed:', errors);
+    else failure = new AggregateError(errors, 'Mode test cleanup failed');
+  }
 }
+if (failure) throw failure;
 // Restore a clean build with the user's original configuration and no fixtures.
 execFileSync(process.execPath, ['node_modules/astro/bin/astro.mjs', 'build'], {
   env: { ...process.env, ASTRO_TELEMETRY_DISABLED: '1' }, stdio: 'pipe',
